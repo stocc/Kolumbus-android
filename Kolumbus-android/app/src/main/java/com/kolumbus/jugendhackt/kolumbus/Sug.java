@@ -15,5 +15,6 @@ public class Sug {
         super();
         this.icon = icon;
         this.title = title;
+        this.text = text;
     }
 }

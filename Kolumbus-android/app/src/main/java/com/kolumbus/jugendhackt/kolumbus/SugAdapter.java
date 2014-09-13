@@ -50,6 +50,7 @@ public class SugAdapter extends ArrayAdapter<Sug>{
         Sug sug = data[position];
         holder.txtTitle.setText(sug.title);
         holder.imgIcon.setImageResource(sug.icon);
+        holder.txttext.setText(sug.text);
 
         return row;
     }
