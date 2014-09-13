@@ -3,6 +3,7 @@ package com.kolumbus.jugendhackt.kolumbus;
 import android.app.Activity;
 import android.database.DataSetObserver;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,25 +31,26 @@ public class Suggestions extends Activity {
                 "Irgendeine Denkmal",
                 "Bundestag"};
 
-        // Define a new Adapter
+        // new Adapter - > ???
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1, values);
 
         // Assign adapter to ListView
         SugList.setAdapter(adapter);
 
+
         // ListView Item Click Listener
         SugList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-
                 int itemPosition = position;
+
                 String  itemValue = (String) SugList.getItemAtPosition(position);
 
-                Toast.makeText(getApplicationContext(),
-                        "Position :"+itemPosition+"  ListItem : " +itemValue , Toast.LENGTH_LONG)
-                        .show();
+                
+                Log.e("ListPosition",  "Position :"+itemPosition+"  ListItem : " +itemValue);
+
 
             }
 
