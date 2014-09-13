@@ -23,14 +23,22 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.droidparts.net.http.HTTPException;
+import org.droidparts.net.http.RESTClient2;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Iterator;
 import java.util.List;
 
 
 public class Suggestions extends Activity {
+
+    public String Url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,37 +46,15 @@ public class Suggestions extends Activity {
         setContentView(R.layout.activity_suggestions);
 
         //GET Online DATA
-        HttpClient httpclient = new DefaultHttpClient();
-        HttpGet httpget = new HttpGet("http://niklas-mbp.local:3000/v1/suggestions?accomodation_lat=" +
+
+         Url = "http://niklas-mbp.local:3000/v1/suggestions?accomodation_lat=" +
                 "53.00000&accomodation_lng=" +
                 "13.00000&starts_at=" +
                 MyMind.startDate + "&ends_at=" +
                 MyMind.endDate + "&visited_count=" +
                 MyMind.earlierVisits + "&budget_class=" +
-                MyMind.budget);
+                MyMind.budget;
 
-        try {
-            HttpResponse response = httpclient.execute(httpget);
-            HttpEntity entity = response.getEntity();
-
-            if (entity != null) {
-                InputStream inputstream = entity.getContent();
-                BufferedReader bufferedreader =
-                        new BufferedReader(new InputStreamReader(inputstream));
-                StringBuilder stringbuilder = new StringBuilder();
-
-                String currentline = null;
-                while ((currentline = bufferedreader.readLine()) != null) {
-                    stringbuilder.append(currentline + "\n");
-                }
-                String result = stringbuilder.toString();
-                Log.v("HTTP REQUEST",result);
-                Toast.makeText(getApplicationContext(),result,Toast.LENGTH_LONG).show();
-                inputstream.close();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         //Got the dat to insert them to SUG[]
         Sug sug_data[] = new Sug[]{
@@ -96,5 +82,33 @@ public class Suggestions extends Activity {
 
 
     }
+
+    public void loadSuggestion(){
+        RESTClient2 client =new RESTClient2(this);
+
+        try {
+            JSONObject mJsonObject = client.getJSONObject(Url);
+
+            for (Iterator<String> iter = mJsonObject.keys(); iter.hasNext(); ) {
+                String key = iter.next();
+                JSONArray mJasonArray = mJsonObject.getJSONArray(key);
+
+                for (int i =0;i<mJasonArray.length();i++){
+                    String id = mJsonObject.getString("id");
+                    Toast.makeText(getApplicationContext(),id,Toast.LENGTH_LONG).show();
+                }
+
+            }
+
+
+
+        }catch (JSONException e){
+            e.printStackTrace();
+        }catch (HTTPException e){
+            e.printStackTrace();
+        }
+    }
+
+
 
 }
