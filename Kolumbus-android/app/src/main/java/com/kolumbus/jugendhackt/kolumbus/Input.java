@@ -172,7 +172,7 @@ public class Input extends Activity {
 
         final Dialog d = new Dialog(Input.this);
         d.setTitle("Budget");
-        d.setContentView(R.layout.dialog);
+        d.setContentView(R.layout.budget_slider_dialog);
         Button b1 = (Button) d.findViewById(R.id.button1);
         Button b2 = (Button) d.findViewById(R.id.button2);
         final SeekBar np = (SeekBar) d.findViewById(R.id.budgetslider1);
