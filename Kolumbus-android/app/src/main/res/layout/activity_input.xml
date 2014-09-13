@@ -16,6 +16,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingTop="20dp"
             android:inputType="date"
             android:ems="10"
             android:id="@+id/eT_dateStart"
@@ -26,6 +27,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingTop="20dp"
             android:inputType="date"
             android:ems="10"
             android:id="@+id/etDateEnd"
@@ -38,6 +40,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingTop="20dp"
             android:inputType="numberDecimal"
             android:ems="10"
             android:id="@+id/eT_visitCount"
@@ -48,6 +51,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingTop="20dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Startdatum"
             android:id="@+id/tV_dateStart"
@@ -61,6 +65,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingTop="20dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Enddatum"
             android:id="@+id/tV_dateEnd"
@@ -74,6 +79,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingTop="20dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Besuche"
             android:id="@+id/tV_visitCount"
@@ -84,85 +90,60 @@
             android:layout_toStartOf="@+id/etDateEnd"
             android:layout_alignTop="@+id/eT_visitCount" />
 
-        <RadioGroup
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/eT_visitCount"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignLeft="@+id/eT_visitCount"
-            android:id="@+id/radioGroup">
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/radioButton"
-                    android:layout_gravity="right"
-                    android:text="€" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/radioButton2"
-                    android:layout_gravity="right"
-                    android:text="€€" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/radioButton3"
-                    android:layout_gravity="right"
-                    android:text="€€€" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/radioButton4"
-                    android:layout_gravity="right"
-                    android:text="€€€€" />
-            </LinearLayout>
-
-        </RadioGroup>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Budget"
-            android:id="@+id/tV_Money"
-            android:layout_alignTop="@+id/radioGroup"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignBottom="@+id/radioGroup"
-            android:layout_toLeftOf="@+id/radioGroup"
-            android:layout_toStartOf="@+id/radioGroup" />
 
         <SeekBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingTop="20dp"
             android:id="@+id/seekBar"
-            android:layout_below="@+id/radioGroup"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_toRightOf="@+id/tV_Money"
-            android:layout_toEndOf="@+id/tV_Money" />
+
+
+            android:max="30"
+            android:layout_toEndOf="@+id/tV_Intensity"
+            android:layout_alignTop="@+id/tV_Intensity"
+            android:layout_toRightOf="@+id/tV_Intensity"
+            android:layout_alignRight="@+id/eT_visitCount"
+            android:layout_alignEnd="@+id/eT_visitCount" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingTop="20dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Intensität"
             android:id="@+id/tV_Intensity"
-            android:layout_below="@+id/radioGroup"
+            android:layout_below="@+id/tV_visitCount"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_alignBottom="@+id/seekBar"
-            android:layout_toStartOf="@+id/radioGroup" />
+            android:layout_alignRight="@+id/tV_visitCount"
+            android:layout_alignEnd="@+id/tV_visitCount" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/textView3"
+            android:layout_below="@+id/seekBar"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/tV_Intensity"
+            android:layout_alignEnd="@+id/tV_Intensity" />
+
+        <SeekBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBar2"
+            android:paddingTop="20dp"
+            android:layout_below="@+id/tV_Intensity"
+            android:layout_toRightOf="@+id/tV_Intensity"
+            android:layout_toEndOf="@+id/tV_Intensity"
+            android:layout_alignRight="@+id/seekBar"
+            android:layout_alignEnd="@+id/seekBar"
+            android:max="3" />
+
     </RelativeLayout>
 
     <Button

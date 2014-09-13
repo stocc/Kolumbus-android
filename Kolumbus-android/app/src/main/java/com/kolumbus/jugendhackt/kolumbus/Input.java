@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
 
 
 public class Input extends Activity {
@@ -22,7 +23,6 @@ public class Input extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Input.this, Suggestions.class);
-                overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
                 startActivity(intent);
             }
         });
