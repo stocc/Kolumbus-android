@@ -55,11 +55,10 @@ import java.util.List;
 public class Suggestions extends Activity {
 
     public String Url;
-    Button load_img;
     ImageView img;
     Bitmap bitmap;
     ProgressDialog pDialog;
-    Sug sug_data;
+    Sug sug_data[];
 
     @ViewById(R.id.loading)
     ProgressBar loading;
@@ -67,7 +66,6 @@ public class Suggestions extends Activity {
     @ViewById(R.id.listView)
     ListView SugList;
 
-    List<Sug> list = new ArrayList<Sug>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +73,6 @@ public class Suggestions extends Activity {
         setContentView(R.layout.activity_suggestions);
 
         //GET Online DATA
-
          Url = "http://secure-mountain-7532.herokuapp.com/v1/suggestions?accomodation_lat=" +
                 "53.00000&accomodation_lng=" +
                 "13.00000&starts_at=" +
@@ -86,27 +83,7 @@ public class Suggestions extends Activity {
 
         loadSuggestion();
 
-        /*//Got the dat to insert them to SUG[]
-        Sug sug_data[] = new Sug[]{
-               new Sug(R.drawable.plane15,"Flughafen","faszinierend an zu sehen"),
-                new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
-                new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
-                new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
-                new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
-                new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
-                new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
-                new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
-                new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
-                new Sug(R.drawable.ic_launcher,"Test","Untertitel")
-        };*/
 
-        //final ListView SugList = (ListView)findViewById(R.id.listView);
-
-        /*View header = (View)getLayoutInflater().inflate(R.layout.suggestions_list_header, null);
-        SugList.addHeaderView(header);*/
-
-        /*SugAdapter adapter = new SugAdapter(this,R.layout.suggestions_list_layout,sug_data);
-        SugList.setAdapter(adapter);*/
     }
 
     public void loadSuggestion(){
@@ -126,7 +103,7 @@ public class Suggestions extends Activity {
         try {
             JSONObject mJsonObject = client.getJSONObject(Url);
             JSONArray mJsonArray = new JSONArray(mJsonObject.get("dinner").toString());
-            System.out.println("lklklklkl uhuhuh");
+            System.out.println("After entrance to Dinner");
 
             for (int i=0; i < mJsonArray.length();i++) {
                 JSONObject temp = mJsonArray.getJSONObject(i);
@@ -138,11 +115,13 @@ public class Suggestions extends Activity {
                 //new LoadImage().execute(mJsonObject.getString("image_url"));
 
                 System.out.println(name);
-                list.add(new Sug(R.id.imgIcon2, url, name));
-                System.out.println(list + " sdsd");
+                Sug sug_data[] = new Sug[]{
+                  new Sug(R.drawable.ic_launcher,name,url)
+                };
+
+                System.out.println("Sug_Data:" + sug_data);
             }
 
-            System.out.println("lklklklkl" + sug_data);
             updateUI();
 
         }catch (JSONException e){
@@ -154,7 +133,7 @@ public class Suggestions extends Activity {
 
     @UiThread
     public void updateUI() {
-        SugAdapter adapter = new SugAdapter(this,R.layout.suggestions_list_layout, list);
+        SugAdapter adapter = new SugAdapter(this,R.layout.suggestions_list_layout, sug_data);
         SugList.setAdapter(adapter);
 
         loading.setVisibility(View.GONE);
@@ -191,3 +170,61 @@ public class Suggestions extends Activity {
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*//Got the dat to insert them to SUG[]
+        Sug sug_data[] = new Sug[]{
+               new Sug(R.drawable.plane15,"Flughafen","faszinierend an zu sehen"),
+                new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
+                new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
+                new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
+                new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
+                new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
+                new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
+                new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
+                new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
+                new Sug(R.drawable.ic_launcher,"Test","Untertitel")
+        };*/
+
+//final ListView SugList = (ListView)findViewById(R.id.listView);
+
+        /*View header = (View)getLayoutInflater().inflate(R.layout.suggestions_list_header, null);
+        SugList.addHeaderView(header);*/
+
+        /*SugAdapter adapter = new SugAdapter(this,R.layout.suggestions_list_layout,sug_data);
+        SugList.setAdapter(adapter);*/

@@ -15,18 +15,18 @@ import java.util.List;
 /**
  * Created by Rico on 13.09.2014.
  */
+
 public class SugAdapter extends ArrayAdapter<Sug>{
 
     Context context;
     int layoutResourceId;
+    Sug data[] = null;
 
-    List<Sug> list = new ArrayList<Sug>();
-
-    public SugAdapter(Context context, int layoutResourceId, List<Sug> data){
+    public SugAdapter(Context context, int layoutResourceId, Sug[] data){
         super(context, layoutResourceId);
         this.layoutResourceId = layoutResourceId;
         this.context = context;
-        this.list = data;
+        this.data = data;
 
     }
 
@@ -52,9 +52,10 @@ public class SugAdapter extends ArrayAdapter<Sug>{
         }
 
 
-        holder.txtTitle.setText(list.get(position).getTitle());
-        holder.imgIcon.setImageResource(list.get(position).getIcon());
-        holder.txttext.setText(list.get(position).getText());
+        Sug sug = data[position];
+        holder.txtTitle.setText(sug.title);
+        holder.imgIcon.setImageResource(sug.icon);
+        holder.txttext.setText(sug.text);
 
         return row;
     }
