@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.NumberPicker;
 import android.widget.SeekBar;
 
@@ -39,7 +40,7 @@ public class Input extends Activity {
             }
         });
 
-        Button btn_about = (Button)findViewById(R.id.btn_about);
+        ImageButton btn_about = (ImageButton)findViewById(R.id.btn_about);
 
         btn_about.setOnClickListener(new View.OnClickListener() {
             @Override
