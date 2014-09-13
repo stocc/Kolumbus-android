@@ -1,6 +1,8 @@
 package com.kolumbus.jugendhackt.kolumbus;
 
 import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,16 +33,19 @@ public class Suggestions extends Activity {
                 new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
                 new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
                 new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
+                new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
+                new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
+                new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
+                new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
                 new Sug(R.drawable.ic_launcher,"Test","Untertitel")
-
-
         };
 
         final ListView SugList = (ListView)findViewById(R.id.listView);
 
         SugAdapter adapter = new SugAdapter(this,R.layout.suggestions_list_layout,sug_data);
-
         SugList.setAdapter(adapter);
+
+
 
     }
 

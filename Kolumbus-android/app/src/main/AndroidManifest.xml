@@ -28,6 +28,10 @@
             android:name=".timetable"
             android:label="@string/title_activity_timetable" >
         </activity>
+        <activity
+            android:name=".SugDetailsInfo"
+            android:label="@string/title_activity_sug_details_info" >
+        </activity>
     </application>
 
 </manifest>
