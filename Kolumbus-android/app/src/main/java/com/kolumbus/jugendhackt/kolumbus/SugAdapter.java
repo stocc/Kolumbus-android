@@ -35,10 +35,11 @@ public class SugAdapter extends ArrayAdapter<Sug>{
             LayoutInflater inflater = ((Activity)context).getLayoutInflater();
             row = inflater.inflate(layoutResourceId,parent,false);
 
-            holder = new SugHolder();
+            holder  = new SugHolder();
+
             holder.imgIcon = (ImageView)row.findViewById(R.id.imgIcon);
             holder.txtTitle = (TextView)row.findViewById(R.id.txtTitle);
-            holder.txtText = (TextView)row.findViewById(R.id.txttext);
+            holder.txttext = (TextView)row.findViewById(R.id.txttext);
 
             row.setTag(holder);
         }
@@ -47,13 +48,13 @@ public class SugAdapter extends ArrayAdapter<Sug>{
         }
 
         Sug sug = data[position];
-        holder.textTitle.setTex(sug.title);
+        holder.txtTitle.setText(sug.title);
         holder.imgIcon.setImageResource(sug.icon);
 
         return row;
     }
 
-    static class  WeatherHolder
+    static class  SugHolder
     {
         ImageView imgIcon;
         TextView txtTitle;

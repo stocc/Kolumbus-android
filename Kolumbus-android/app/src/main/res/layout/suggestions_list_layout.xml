@@ -21,7 +21,7 @@
         android:layout_height="26dip"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_toRightOf="@id/icon"
+        android:layout_toRightOf="@id/imgIcon"
         android:ellipsize="marquee"
         android:singleLine="true"
         android:text="Description"
@@ -30,14 +30,23 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/secondLine"
+        android:layout_above="@id/txttext"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_alignWithParentIfMissing="true"
-        android:layout_toRightOf="@id/icon"
+        android:layout_toRightOf="@id/imgIcon"
         android:gravity="center_vertical"
         android:text="Example application"
         android:textSize="16sp"
         android:id="@+id/txtTitle" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/switchchooose"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignBottom="@+id/txttext" />
 
 </RelativeLayout>
