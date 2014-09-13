@@ -15,7 +15,9 @@ public class AboutScreen extends Activity {
         setContentView(R.layout.activity_about_screen);
 
         TextView txtInfo = (TextView)findViewById(R.id.txtInfo);
-        txtInfo.setText("HeaderListView"+"\n"+"Copyright (c) 2013, Applidium All rights reserved. Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:\n" +
+        txtInfo.setText("\n \n "+"Creative Commons – Attribution (CC BY 3.0) Telescope designed by Olivier Guin from the Noun Project powered by Yelp" + "\n \n"+
+
+        "\n \n"+"HeaderListView"+"\n \n "+"Copyright (c) 2013, Applidium All rights reserved. Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:\n" +
                 "\n" +
                 "Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.\n" +
                 "Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.\n" +

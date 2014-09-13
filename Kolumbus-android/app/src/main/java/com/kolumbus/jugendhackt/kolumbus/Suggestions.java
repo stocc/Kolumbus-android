@@ -63,6 +63,7 @@ public class Suggestions extends Activity {
                 }
                 String result = stringbuilder.toString();
                 Log.v("HTTP REQUEST",result);
+                Toast.makeText(getApplicationContext(),result,Toast.LENGTH_LONG).show();
                 inputstream.close();
             }
         } catch (Exception e) {
