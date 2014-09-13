@@ -9,144 +9,61 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:padding="10dp"
-        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/btn_inputlos">
+
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:paddingTop="20dp"
-            android:inputType="date"
-            android:background="@drawable/circlebutton"
-            android:ems="10"
-            android:id="@+id/eT_dateStart"
-            android:text="Datum auswählen"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:background="@drawable/circlebutton"
-            android:paddingTop="20dp"
-            android:inputType="date"
-            android:ems="10"
-            android:id="@+id/etDateEnd"
-            android:layout_below="@+id/eT_dateStart"
-            android:layout_alignLeft="@+id/eT_dateStart"
-            android:layout_alignStart="@+id/eT_dateStart"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:text="Datum auswählen"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:paddingTop="20dp"
-            android:background="@drawable/circlebutton"
-            android:ems="10"
-            android:id="@+id/eT_visitCount"
-            android:layout_below="@+id/etDateEnd"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="20dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Startdatum"
-            android:id="@+id/tV_dateStart"
+            android:id="@+id/btn_StartDate"
             android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_toLeftOf="@+id/eT_dateStart"
-            android:layout_toStartOf="@+id/eT_dateStart"
-            android:layout_above="@+id/etDateEnd" />
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/circlebutton"
+            android:layout_marginTop="15dp" />
 
-        <TextView
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="20dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Enddatum"
-            android:id="@+id/tV_dateEnd"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_toLeftOf="@+id/etDateEnd"
-            android:layout_toStartOf="@+id/eT_dateStart"
-            android:layout_alignTop="@+id/etDateEnd" />
+            android:id="@+id/btn_EndDate"
+            android:layout_below="@+id/btn_StartDate"
+            android:layout_alignLeft="@+id/btn_StartDate"
+            android:layout_alignStart="@+id/btn_StartDate"
+            android:background="@drawable/circlebutton"
+            android:layout_marginTop="15dp" />
 
-        <TextView
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="20dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Besuche"
-            android:id="@+id/tV_visitCount"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignBottom="@+id/eT_visitCount"
-            android:layout_toLeftOf="@+id/etDateEnd"
-            android:layout_toStartOf="@+id/etDateEnd"
-            android:layout_alignTop="@+id/eT_visitCount" />
+            android:text="Vorherige Besuche"
+            android:id="@+id/btn_VisitCount"
+            android:layout_below="@+id/btn_EndDate"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/circlebutton"
+            android:layout_marginTop="15dp" />
 
-
-
-        <SeekBar
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="20dp"
-            android:id="@+id/seekBar"
+            android:text="Budget"
+            android:id="@+id/btn_BudgetClass"
+            android:layout_below="@+id/btn_VisitCount"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/circlebutton"
+            android:layout_marginTop="15dp" />
 
-
-            android:max="30"
-            android:layout_toEndOf="@+id/tV_Intensity"
-            android:layout_alignTop="@+id/tV_Intensity"
-            android:layout_toRightOf="@+id/tV_Intensity"
-            android:layout_alignRight="@+id/eT_visitCount"
-            android:layout_alignEnd="@+id/eT_visitCount" />
-
-        <TextView
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="20dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Intensität"
-            android:id="@+id/tV_Intensity"
-            android:layout_below="@+id/tV_visitCount"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignRight="@+id/tV_visitCount"
-            android:layout_alignEnd="@+id/tV_visitCount" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="20dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
-            android:id="@+id/textView3"
-            android:layout_below="@+id/seekBar"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignRight="@+id/tV_Intensity"
-            android:layout_alignEnd="@+id/tV_Intensity" />
-
-        <SeekBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/seekBar2"
-            android:paddingTop="20dp"
-            android:layout_below="@+id/tV_Intensity"
-            android:layout_toRightOf="@+id/tV_Intensity"
-            android:layout_toEndOf="@+id/tV_Intensity"
-            android:layout_alignRight="@+id/seekBar"
-            android:layout_alignEnd="@+id/seekBar"
-            android:max="3" />
-
+            android:id="@+id/btn_VisitIntensity"
+            android:layout_below="@+id/btn_BudgetClass"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/circlebutton"
+            android:layout_marginTop="15dp" />
     </RelativeLayout>
 
     <Button

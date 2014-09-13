@@ -2,6 +2,8 @@ package com.kolumbus.jugendhackt.kolumbus;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.RadioButton;
 
 import java.util.Calendar;
@@ -37,9 +40,87 @@ public class Input extends Activity {
             }
         });
 
-        //Initialize Date Buttons
-        final EditText eT_DateStart = (EditText)findViewById(R.id.eT_dateStart);
-        final EditText eT_DateEnd = (EditText)findViewById(R.id.etDateEnd);
+        final Button btn_DateStart = (Button)findViewById(R.id.btn_StartDate);
+        final Button btn_DateEnd = (Button)findViewById(R.id.btn_EndDate);
+        final Button btn_VisitCount = (Button)findViewById(R.id.btn_VisitCount);
+        Button btn_BudgetClass = (Button)findViewById(R.id.btn_BudgetClass);
+        Button btn_VisitIntensity = (Button)findViewById(R.id.btn_VisitIntensity);
+
+        btn_DateStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar c = Calendar.getInstance();
+                mYear = c.get(Calendar.YEAR);
+                mMonth = c.get(Calendar.MONTH);
+                mDay = c.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dpd = new DatePickerDialog(Input.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                btn_DateStart.setText(dayOfMonth + "-"
+                                        + (monthOfYear + 1) + "-" + year);
+
+                            }
+                        }, mYear, mMonth, mDay);
+                dpd.show();
+            }
+        });
+
+        btn_DateEnd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar c = Calendar.getInstance();
+                mYear = c.get(Calendar.YEAR);
+                mMonth = c.get(Calendar.MONTH);
+                mDay = c.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dpd = new DatePickerDialog(Input.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                btn_DateEnd.setText(dayOfMonth + "-"
+                                        + (monthOfYear + 1) + "-" + year);
+
+                            }
+                        }, mYear, mMonth, mDay);
+                dpd.show();
+            }
+        });
+
+        btn_VisitCount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog d = new Dialog(Input.this);
+                d.setTitle("Wie oft warst du schon da?");
+                d.setContentView(R.layout.dialog);
+                Button b1 = (Button) d.findViewById(R.id.button1);
+                Button b2 = (Button) d.findViewById(R.id.button2);
+                final NumberPicker np = (NumberPicker) d.findViewById(R.id.numberPicker1);
+                np.setMaxValue(20);
+                np.setMinValue(0);
+                np.setWrapSelectorWheel(false);
+                /*np.setOnValueChangedListener(Input.class);
+                b1.setOnClickListener(new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v) {
+                        btn_VisitCount.setText(String.valueOf(np.getValue()));
+                        d.dismiss();
+                    }
+                });
+                b2.setOnClickListener(new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v) {
+                        d.dismiss();
+                    }
+                });*/
+            }
+        });
+
 
 /*
         eT_DateStart.setOnClickListener(new View.OnClickListener() {
