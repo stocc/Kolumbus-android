@@ -69,6 +69,8 @@ public class Input extends Activity {
                                 btn_DateStart.setText("vom " + dayOfMonth + "-"
                                         + (monthOfYear + 1) + "-" + year);
 
+                                MyMind.startDate=dayOfMonth + "-" + (monthOfYear+1) + "-" + year;
+
                             }
                         }, mYear, mMonth, mDay);
                 dpd.show();
@@ -90,6 +92,8 @@ public class Input extends Activity {
                                                   int monthOfYear, int dayOfMonth) {
                                 btn_DateEnd.setText("bis zum " + dayOfMonth + "-"
                                         + (monthOfYear + 1) + "-" + year);
+
+                                MyMind.endDate=dayOfMonth + "-" + (monthOfYear+1) + "-" + year;
 
                             }
                         }, mYear, mMonth, mDay);
@@ -163,6 +167,7 @@ public class Input extends Activity {
             @Override
             public void onClick(View v) {
                 btn_VisitCount.setText("Bereits " + String.valueOf(np.getValue()) + " Besuche");
+                MyMind.earlierVisits=np.getValue();
                 d.dismiss();
             }
         });
@@ -202,6 +207,8 @@ public class Input extends Activity {
                 if (np.getProgress()==2) btn_BudgetClass.setText("Preisklasse: €€€");
                 if (np.getProgress()==3) btn_BudgetClass.setText("Preisklasse: €€€€");
 
+                MyMind.budget=np.getProgress();
+
                 d.dismiss();
             }
         });
@@ -236,6 +243,8 @@ public class Input extends Activity {
 
                 btn_VisitIntensity.setText("Intensität " + String.valueOf(np.getProgress()) +
                         " von" + String.valueOf(np.getMax()));
+
+                MyMind.intensity=np.getProgress();
 
                 d.dismiss();
             }

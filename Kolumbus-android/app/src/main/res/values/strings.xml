@@ -4,9 +4,9 @@
     <string name="app_name">Kolumbus</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_input">Input</string>
-    <string name="title_activity_suggestions">Suggestions</string>
-    <string name="title_activity_timetable">timetable</string>
+    <string name="title_activity_input">Eingabe</string>
+    <string name="title_activity_suggestions">Vorschläge</string>
+    <string name="title_activity_timetable">Zeitplan</string>
     <string name="title_activity_sug_details_info">SugDetailsInfo</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_about_screen">AboutScreen</string>

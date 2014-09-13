@@ -16,6 +16,15 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.List;
 
 
@@ -25,6 +34,48 @@ public class Suggestions extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suggestions);
+
+
+        //GET Online DATA
+
+        Log.e("URL","http://niklas-mbp.local:3000/v1/suggestions?accomodation_lat=" +
+                "5313&accomodation_lng=" +
+                "13&starts_at=" +
+                MyMind.startDate + "&ends_at=" +
+                MyMind.endDate + "&visited_count=" +
+                MyMind.earlierVisits + "&budget_class=" +
+                MyMind.budget);
+
+        HttpClient httpclient = new DefaultHttpClient();
+        HttpGet httpget = new HttpGet("http://niklas-mbp.local:3000/v1/suggestions?accomodation_lat=" +
+                "5313&accomodation_lng=" +
+                "13&starts_at=" +
+                MyMind.startDate + "&ends_at=" +
+                MyMind.endDate + "&visited_count=" +
+                MyMind.earlierVisits + "&budget_class=" +
+                MyMind.budget);
+
+        try {
+            HttpResponse response = httpclient.execute(httpget);
+            HttpEntity entity = response.getEntity();
+
+            if (entity != null) {
+                InputStream inputstream = entity.getContent();
+                BufferedReader bufferedreader =
+                        new BufferedReader(new InputStreamReader(inputstream));
+                StringBuilder stringbuilder = new StringBuilder();
+
+                String currentline = null;
+                while ((currentline = bufferedreader.readLine()) != null) {
+                    stringbuilder.append(currentline + "\n");
+                }
+                String result = stringbuilder.toString();
+                Log.v("HTTP REQUEST",result);
+                inputstream.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         //Got the dat to insert them to SUG[]
         Sug sug_data[] = new Sug[]{
