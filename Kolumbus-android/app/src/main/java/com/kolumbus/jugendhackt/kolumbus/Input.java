@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.SeekBar;
 
@@ -41,8 +42,16 @@ public class Input extends Activity {
         final Button btn_DateStart = (Button)findViewById(R.id.btn_StartDate);
         final Button btn_DateEnd = (Button)findViewById(R.id.btn_EndDate);
         final Button btn_VisitCount = (Button)findViewById(R.id.btn_VisitCount);
-        Button btn_BudgetClass = (Button)findViewById(R.id.btn_BudgetClass);
-        Button btn_VisitIntensity = (Button)findViewById(R.id.btn_VisitIntensity);
+        final Button btn_BudgetClass = (Button)findViewById(R.id.btn_BudgetClass);
+        final Button btn_VisitIntensity = (Button)findViewById(R.id.btn_VisitIntensity);
+        final EditText btn_location = (EditText)findViewById(R.id.btn_Location);
+
+        btn_location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btn_location.setText("");
+            }
+        });
 
         btn_DateStart.setOnClickListener(new View.OnClickListener() {
             @Override
