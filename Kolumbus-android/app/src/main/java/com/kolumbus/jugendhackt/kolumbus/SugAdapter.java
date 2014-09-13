@@ -9,6 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Rico on 13.09.2014.
  */
@@ -16,13 +19,14 @@ public class SugAdapter extends ArrayAdapter<Sug>{
 
     Context context;
     int layoutResourceId;
-    Sug data[] = null;
 
-    public SugAdapter(Context context, int layoutResourceId,Sug[] data){
-        super(context, layoutResourceId, data);
+    List<Sug> list = new ArrayList<Sug>();
+
+    public SugAdapter(Context context, int layoutResourceId, List<Sug> data){
+        super(context, layoutResourceId);
         this.layoutResourceId = layoutResourceId;
         this.context = context;
-        this.data = data;
+        this.list = data;
 
     }
 
@@ -47,10 +51,10 @@ public class SugAdapter extends ArrayAdapter<Sug>{
             holder = (SugHolder)row.getTag();
         }
 
-        Sug sug = data[position];
-        holder.txtTitle.setText(sug.title);
-        holder.imgIcon.setImageResource(sug.icon);
-        holder.txttext.setText(sug.text);
+
+        holder.txtTitle.setText(list.get(position).getTitle());
+        holder.imgIcon.setImageResource(list.get(position).getIcon());
+        holder.txttext.setText(list.get(position).getText());
 
         return row;
     }

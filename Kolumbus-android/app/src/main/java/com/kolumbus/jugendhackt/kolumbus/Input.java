@@ -29,12 +29,13 @@ public class Input extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input);
 
-        Button btn_los = (Button)findViewById(R.id.btn_inputlos);
+        Button btn_los = (Button)findViewById(R.id.btn_leaveinput);
 
         btn_los.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Input.this, Suggestions.class);
+
+                Intent intent = new Intent(Input.this, Suggestions_.class);
                 startActivity(intent);
 
             }

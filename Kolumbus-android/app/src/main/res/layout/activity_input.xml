@@ -81,7 +81,7 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="50dp"
-        android:id="@+id/btn_inputlos"
+        android:id="@+id/btn_leaveinput"
         android:background="@drawable/suggestions_circlebutton"
         android:text="Fertig"
         android:textColor="#FFFFFF"
