@@ -40,16 +40,6 @@ public class Input extends Activity {
             }
         });
 
-        ImageButton btn_about = (ImageButton)findViewById(R.id.btn_about);
-
-        btn_about.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Input.this, AboutScreen.class);
-                startActivity(intent);
-            }
-        });
-
         final Button btn_DateStart = (Button)findViewById(R.id.btn_StartDate);
         final Button btn_DateEnd = (Button)findViewById(R.id.btn_EndDate);
         final Button btn_VisitCount = (Button)findViewById(R.id.btn_VisitCount);
@@ -153,7 +143,11 @@ public class Input extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.about) {
+
+            Intent intent = new Intent(Input.this, AboutScreen.class);
+            startActivity(intent);
+
             return true;
         }
         return super.onOptionsItemSelected(item);
