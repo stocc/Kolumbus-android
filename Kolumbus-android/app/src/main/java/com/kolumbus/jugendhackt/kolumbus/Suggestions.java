@@ -55,6 +55,8 @@ public class Suggestions extends Activity {
                 MyMind.earlierVisits + "&budget_class=" +
                 MyMind.budget;
 
+        loadSuggestion();
+
 
         //Got the dat to insert them to SUG[]
         Sug sug_data[] = new Sug[]{
@@ -94,14 +96,15 @@ public class Suggestions extends Activity {
                 JSONArray mJasonArray = mJsonObject.getJSONArray(key);
 
                 for (int i =0;i<mJasonArray.length();i++){
-                    String id = mJsonObject.getString("id");
-                    Toast.makeText(getApplicationContext(),id,Toast.LENGTH_LONG).show();
+                    String name = mJsonObject.getString("name");
+                    String url = mJsonObject.getString("Url");
+
+                    Toast.makeText(getApplicationContext(),name,Toast.LENGTH_LONG).show();
+
+                    Sug sug_data[] = new Sug[]{ new Sug(R.drawable.plane15,name,url)};
                 }
 
             }
-
-
-
         }catch (JSONException e){
             e.printStackTrace();
         }catch (HTTPException e){
