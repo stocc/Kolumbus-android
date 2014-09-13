@@ -9,5 +9,6 @@
     <string name="title_activity_timetable">timetable</string>
     <string name="title_activity_sug_details_info">SugDetailsInfo</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_about_screen">AboutScreen</string>
 
 </resources>
