@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -90,87 +91,18 @@ public class Input extends Activity {
             }
         });
 
+
         btn_VisitCount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Dialog d = new Dialog(Input.this);
-                d.setTitle("Wie oft warst du schon da?");
-                d.setContentView(R.layout.dialog);
-                Button b1 = (Button) d.findViewById(R.id.button1);
-                Button b2 = (Button) d.findViewById(R.id.button2);
-                final NumberPicker np = (NumberPicker) d.findViewById(R.id.numberPicker1);
-                np.setMaxValue(20);
-                np.setMinValue(0);
-                np.setWrapSelectorWheel(false);
-                /*np.setOnValueChangedListener(Input.class);
-                b1.setOnClickListener(new DialogInterface.OnClickListener()
-                {
-                    @Override
-                    public void onClick(View v) {
-                        btn_VisitCount.setText(String.valueOf(np.getValue()));
-                        d.dismiss();
-                    }
-                });
-                b2.setOnClickListener(new DialogInterface.OnClickListener()
-                {
-                    @Override
-                    public void onClick(View v) {
-                        d.dismiss();
-                    }
-                });*/
+                show();
             }
         });
-
-
-/*
-        eT_DateStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Calendar c = Calendar.getInstance();
-                mYear = c.get(Calendar.YEAR);
-                mMonth = c.get(Calendar.MONTH);
-                mDay = c.get(Calendar.DAY_OF_MONTH);
-
-                DatePickerDialog dpd = new DatePickerDialog(Input.this,
-                        new DatePickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(DatePicker view, int year,
-                                                  int monthOfYear, int dayOfMonth) {
-                                eT_DateStart.setText(dayOfMonth + "-"
-                                        + (monthOfYear + 1) + "-" + year);
-
-                            }
-                        }, mYear, mMonth, mDay);
-                dpd.show();
-            }
-        });
-
-
-
-        eT_DateEnd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Calendar c = Calendar.getInstance();
-                mYear = c.get(Calendar.YEAR);
-                mMonth = c.get(Calendar.MONTH);
-                mDay = c.get(Calendar.DAY_OF_MONTH);
-
-                DatePickerDialog dpd = new DatePickerDialog(Input.this,
-                        new DatePickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(DatePicker view, int year,
-                                                  int monthOfYear, int dayOfMonth) {
-                                eT_DateEnd.setText(dayOfMonth + "-"
-                                        + (monthOfYear + 1) + "-" + year);
-
-                            }
-                        }, mYear, mMonth, mDay);
-                dpd.show();
-            }
-        });
-*/
 
     }
+
+
+
 
 
     @Override
@@ -190,5 +122,39 @@ public class Input extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void show()
+    {
+
+        final Button btn_VisitCount = (Button)findViewById(R.id.btn_VisitCount);
+
+        final Dialog d = new Dialog(Input.this);
+        d.setTitle("NumberPicker");
+        d.setContentView(R.layout.dialog);
+        Button b1 = (Button) d.findViewById(R.id.button1);
+        Button b2 = (Button) d.findViewById(R.id.button2);
+        final NumberPicker np = (NumberPicker) d.findViewById(R.id.numberPicker1);
+        np.setMaxValue(20);
+        np.setMinValue(0);
+        np.setWrapSelectorWheel(false);
+        b1.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                btn_VisitCount.setText("Bereits " + String.valueOf(np.getValue()) + " Besuche");
+                d.dismiss();
+            }
+        });
+        b2.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                d.dismiss();
+            }
+        });
+        d.show();
+
+
     }
 }
