@@ -180,7 +180,11 @@ public class Input extends Activity {
         {
             @Override
             public void onClick(View v) {
-                btn_BudgetClass.setText("Bereits " + String.valueOf(np.getProgress()) + " Besuche");
+                if (np.getProgress()==0) btn_BudgetClass.setText("Preisklasse: €");
+                if (np.getProgress()==1) btn_BudgetClass.setText("Preisklasse: €€");
+                if (np.getProgress()==2) btn_BudgetClass.setText("Preisklasse: €€€");
+                if (np.getProgress()==3) btn_BudgetClass.setText("Preisklasse: €€€€");
+                
                 d.dismiss();
             }
         });
