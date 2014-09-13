@@ -24,9 +24,9 @@ public class Suggestions extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suggestions);
 
-        //G
+        //Got the dat to insert them to SUG[]
         Sug sug_data[] = new Sug[]{
-               new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
+               new Sug(R.drawable.plane15,"Flughafen","faszinierend an zu sehen"),
                 new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
                 new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
                 new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
