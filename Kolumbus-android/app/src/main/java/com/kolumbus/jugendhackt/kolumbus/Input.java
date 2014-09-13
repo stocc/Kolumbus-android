@@ -176,6 +176,7 @@ public class Input extends Activity {
         Button b1 = (Button) d.findViewById(R.id.button1);
         Button b2 = (Button) d.findViewById(R.id.button2);
         final SeekBar np = (SeekBar) d.findViewById(R.id.budgetslider1);
+        np.setMax(3);
         b1.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -184,7 +185,42 @@ public class Input extends Activity {
                 if (np.getProgress()==1) btn_BudgetClass.setText("Preisklasse: €€");
                 if (np.getProgress()==2) btn_BudgetClass.setText("Preisklasse: €€€");
                 if (np.getProgress()==3) btn_BudgetClass.setText("Preisklasse: €€€€");
-                
+
+                d.dismiss();
+            }
+        });
+        b2.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                d.dismiss();
+            }
+        });
+        d.show();
+    }
+
+
+
+    public void showIntensity()
+    {
+
+        final Button btn_VisitIntensity = (Button)findViewById(R.id.btn_VisitIntensity);
+
+        final Dialog d = new Dialog(Input.this);
+        d.setTitle("Intensität");
+        d.setContentView(R.layout.budget_slider_dialog);
+        Button b1 = (Button) d.findViewById(R.id.button1);
+        Button b2 = (Button) d.findViewById(R.id.button2);
+        final SeekBar np = (SeekBar) d.findViewById(R.id.budgetslider1);
+        np.setMax(10);
+        b1.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+
+                btn_VisitIntensity.setText("Intensität " + String.valueOf(np.getProgress()) +
+                        " von" + String.valueOf(np.getMax()));
+
                 d.dismiss();
             }
         });
