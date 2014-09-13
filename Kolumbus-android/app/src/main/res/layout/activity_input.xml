@@ -75,6 +75,14 @@
             android:layout_centerHorizontal="true"
             android:background="@drawable/circlebutton"
             android:layout_marginTop="15dp" />
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/btn_about"
+            android:background="@drawable/question"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
     </RelativeLayout>
 
     <Button

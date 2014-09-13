@@ -39,6 +39,16 @@ public class Input extends Activity {
             }
         });
 
+        Button btn_about = (Button)findViewById(R.id.btn_about);
+
+        btn_about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Input.this, AboutScreen.class);
+                startActivity(intent);
+            }
+        });
+
         final Button btn_DateStart = (Button)findViewById(R.id.btn_StartDate);
         final Button btn_DateEnd = (Button)findViewById(R.id.btn_EndDate);
         final Button btn_VisitCount = (Button)findViewById(R.id.btn_VisitCount);

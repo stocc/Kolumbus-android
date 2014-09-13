@@ -16,6 +16,8 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.applidium.headerlistview.HeaderListView;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -36,35 +38,16 @@ public class Suggestions extends Activity {
         setContentView(R.layout.activity_suggestions);
 
         //GET Online DATA
-
-        Log.e("ich bin noch da","wirklich!");
-
-        Log.e("URL","http://niklas-mbp.local:3000/v1/suggestions?accomodation_lat=" +
-                "5313&accomodation_lng=" +
-                "13&starts_at=" +
-                MyMind.startDate + "&ends_at=" +
-                MyMind.endDate + "&visited_count=" +
-                MyMind.earlierVisits + "&budget_class=" +
-                MyMind.budget);
-
-        Toast.makeText(getApplicationContext(),"http://niklas-mbp.local:3000/v1/suggestions?accomodation_lat=" +
-                "5313&accomodation_lng=" +
-                "13&starts_at=" +
-                MyMind.startDate + "&ends_at=" +
-                MyMind.endDate + "&visited_count=" +
-                MyMind.earlierVisits + "&budget_class=" +
-                MyMind.budget,Toast.LENGTH_LONG).show();
-
         HttpClient httpclient = new DefaultHttpClient();
         HttpGet httpget = new HttpGet("http://niklas-mbp.local:3000/v1/suggestions?accomodation_lat=" +
-                "5313&accomodation_lng=" +
-                "13&starts_at=" +
+                "53.00000&accomodation_lng=" +
+                "13.00000&starts_at=" +
                 MyMind.startDate + "&ends_at=" +
                 MyMind.endDate + "&visited_count=" +
                 MyMind.earlierVisits + "&budget_class=" +
                 MyMind.budget);
 
-        /*try {
+        try {
             HttpResponse response = httpclient.execute(httpget);
             HttpEntity entity = response.getEntity();
 
@@ -84,7 +67,7 @@ public class Suggestions extends Activity {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }*/
+        }
 
         //Got the dat to insert them to SUG[]
         Sug sug_data[] = new Sug[]{
@@ -101,6 +84,10 @@ public class Suggestions extends Activity {
         };
 
         final ListView SugList = (ListView)findViewById(R.id.listView);
+
+        /*View header = (View)getLayoutInflater().inflate(R.layout.suggestions_list_header, null);
+        SugList.addHeaderView(header);*/
+
 
         SugAdapter adapter = new SugAdapter(this,R.layout.suggestions_list_layout,sug_data);
         SugList.setAdapter(adapter);
