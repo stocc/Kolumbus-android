@@ -1,9 +1,19 @@
 package com.kolumbus.jugendhackt.kolumbus;
 
 import android.app.Activity;
+import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.List;
 
 
 public class Suggestions extends Activity {
@@ -12,6 +22,39 @@ public class Suggestions extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suggestions);
+
+        final ListView SugList = (ListView)findViewById(R.id.listView);
+
+
+        String[] values = new String[] { "Brandeburger Tor",
+                "Irgendeine Denkmal",
+                "Bundestag"};
+
+        // Define a new Adapter
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, values);
+
+        // Assign adapter to ListView
+        SugList.setAdapter(adapter);
+
+        // ListView Item Click Listener
+        SugList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+
+                int itemPosition = position;
+                String  itemValue = (String) SugList.getItemAtPosition(position);
+
+                Toast.makeText(getApplicationContext(),
+                        "Position :"+itemPosition+"  ListItem : " +itemValue , Toast.LENGTH_LONG)
+                        .show();
+
+            }
+
+        });
+
+
     }
 
 
