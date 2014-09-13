@@ -144,6 +144,57 @@
             android:layout_alignEnd="@+id/seekBar"
             android:max="3" />
 
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="5px"
+            android:id="@+id/split1"
+            android:background="#FF8A8789"
+            android:layout_below="@+id/eT_dateStart"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:focusableInTouchMode="false"
+            android:paddingTop="10dp" />
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="5px"
+            android:id="@+id/split2"
+            android:background="#FF8A8789"
+            android:layout_alignBottom="@+id/tV_Intensity"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:paddingTop="10dp" />
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="5px"
+            android:id="@+id/split3"
+            android:background="#FF8A8789"
+            android:layout_alignBottom="@+id/etDateEnd"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:paddingTop="10dp" />
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="5px"
+            android:id="@+id/isplit4"
+            android:background="#FF8A8789"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:paddingTop="10dp" />
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="5px"
+            android:id="@+id/split5"
+            android:background="#FF8A8789"
+            android:layout_above="@+id/seekBar"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:paddingTop="10dp" />
+
     </RelativeLayout>
 
     <Button
