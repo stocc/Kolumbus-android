@@ -6,5 +6,6 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_input">Input</string>
     <string name="title_activity_suggestions">Suggestions</string>
+    <string name="title_activity_timetable">timetable</string>
 
 </resources>

@@ -24,6 +24,10 @@
             android:name=".Suggestions"
             android:label="@string/title_activity_suggestions" >
         </activity>
+        <activity
+            android:name=".timetable"
+            android:label="@string/title_activity_timetable" >
+        </activity>
     </application>
 
 </manifest>
