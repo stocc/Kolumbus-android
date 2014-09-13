@@ -26,7 +26,7 @@ public class Suggestions extends Activity {
 
         final ListView SugList = (ListView)findViewById(R.id.listView);
 
-
+        //data... later get in json
         String[] values = new String[] { "Brandeburger Tor",
                 "Irgendeine Denkmal",
                 "Bundestag"};
@@ -48,7 +48,7 @@ public class Suggestions extends Activity {
 
                 String  itemValue = (String) SugList.getItemAtPosition(position);
 
-                
+
                 Log.e("ListPosition",  "Position :"+itemPosition+"  ListItem : " +itemValue);
 
 
