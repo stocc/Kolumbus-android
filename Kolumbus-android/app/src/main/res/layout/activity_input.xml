@@ -13,20 +13,23 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
-        <EditText
+        <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:paddingTop="20dp"
             android:inputType="date"
+            android:background="@drawable/circlebutton"
             android:ems="10"
             android:id="@+id/eT_dateStart"
+            android:text="Datum auswählen"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 
-        <EditText
+        <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:background="@drawable/circlebutton"
             android:paddingTop="20dp"
             android:inputType="date"
             android:ems="10"
@@ -35,13 +38,14 @@
             android:layout_alignLeft="@+id/eT_dateStart"
             android:layout_alignStart="@+id/eT_dateStart"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:text="Datum auswählen"/>
 
-        <EditText
+        <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:paddingTop="20dp"
-            android:inputType="numberDecimal"
+            android:background="@drawable/circlebutton"
             android:ems="10"
             android:id="@+id/eT_visitCount"
             android:layout_below="@+id/etDateEnd"
@@ -73,7 +77,6 @@
             android:layout_alignParentStart="true"
             android:layout_toLeftOf="@+id/etDateEnd"
             android:layout_toStartOf="@+id/eT_dateStart"
-            android:layout_above="@+id/eT_visitCount"
             android:layout_alignTop="@+id/etDateEnd" />
 
         <TextView
@@ -143,57 +146,6 @@
             android:layout_alignRight="@+id/seekBar"
             android:layout_alignEnd="@+id/seekBar"
             android:max="3" />
-
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="5px"
-            android:id="@+id/split1"
-            android:background="#FF8A8789"
-            android:layout_below="@+id/eT_dateStart"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:focusableInTouchMode="false"
-            android:paddingTop="10dp" />
-
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="5px"
-            android:id="@+id/split2"
-            android:background="#FF8A8789"
-            android:layout_alignBottom="@+id/tV_Intensity"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:paddingTop="10dp" />
-
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="5px"
-            android:id="@+id/split3"
-            android:background="#FF8A8789"
-            android:layout_alignBottom="@+id/etDateEnd"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:paddingTop="10dp" />
-
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="5px"
-            android:id="@+id/isplit4"
-            android:background="#FF8A8789"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:paddingTop="10dp" />
-
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="5px"
-            android:id="@+id/split5"
-            android:background="#FF8A8789"
-            android:layout_above="@+id/seekBar"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:paddingTop="10dp" />
 
     </RelativeLayout>
 
