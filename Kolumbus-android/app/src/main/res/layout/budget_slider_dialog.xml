@@ -4,19 +4,20 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
-    <NumberPicker
-        android:id="@+id/budgetslider"
-        android:layout_width="wrap_content"
+    <SeekBar
+        android:id="@+id/budgetslider1"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="64dp" />
+        android:layout_marginTop="64dp"
+        android:max="3" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/budgetslider"
+        android:layout_below="@+id/budgetslider1"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="98dp"
         android:text="Abbrechen"

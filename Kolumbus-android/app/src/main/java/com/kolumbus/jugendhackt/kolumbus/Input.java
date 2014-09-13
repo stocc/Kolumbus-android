@@ -3,18 +3,15 @@ package com.kolumbus.jugendhackt.kolumbus;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.NumberPicker;
-import android.widget.RadioButton;
+import android.widget.SeekBar;
 
 import java.util.Calendar;
 
@@ -60,7 +57,7 @@ public class Input extends Activity {
                             @Override
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
-                                btn_DateStart.setText(dayOfMonth + "-"
+                                btn_DateStart.setText("vom " + dayOfMonth + "-"
                                         + (monthOfYear + 1) + "-" + year);
 
                             }
@@ -82,7 +79,7 @@ public class Input extends Activity {
                             @Override
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
-                                btn_DateEnd.setText(dayOfMonth + "-"
+                                btn_DateEnd.setText("bis zum " + dayOfMonth + "-"
                                         + (monthOfYear + 1) + "-" + year);
 
                             }
@@ -96,6 +93,13 @@ public class Input extends Activity {
             @Override
             public void onClick(View v) {
                 show();
+            }
+        });
+
+        btn_BudgetClass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showbudget();
             }
         });
 
@@ -134,7 +138,7 @@ public class Input extends Activity {
         d.setContentView(R.layout.dialog);
         Button b1 = (Button) d.findViewById(R.id.button1);
         Button b2 = (Button) d.findViewById(R.id.button2);
-        final NumberPicker np = (NumberPicker) d.findViewById(R.id.numberPicker1);
+        final NumberPicker np = (NumberPicker) d.findViewById(R.id.budgetslider);
         np.setMaxValue(20);
         np.setMinValue(0);
         np.setWrapSelectorWheel(false);
@@ -156,5 +160,37 @@ public class Input extends Activity {
         d.show();
 
 
+    }
+
+
+
+
+    public void showbudget()
+    {
+
+        final Button btn_BudgetClass = (Button)findViewById(R.id.btn_BudgetClass);
+
+        final Dialog d = new Dialog(Input.this);
+        d.setTitle("Budget");
+        d.setContentView(R.layout.dialog);
+        Button b1 = (Button) d.findViewById(R.id.button1);
+        Button b2 = (Button) d.findViewById(R.id.button2);
+        final SeekBar np = (SeekBar) d.findViewById(R.id.budgetslider1);
+        b1.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                btn_BudgetClass.setText("Bereits " + String.valueOf(np.getProgress()) + " Besuche");
+                d.dismiss();
+            }
+        });
+        b2.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                d.dismiss();
+            }
+        });
+        d.show();
     }
 }
