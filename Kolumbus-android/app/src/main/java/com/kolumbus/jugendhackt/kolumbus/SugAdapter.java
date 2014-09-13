@@ -39,7 +39,7 @@ public class SugAdapter extends ArrayAdapter<Sug>{
 
             holder.imgIcon = (ImageView)row.findViewById(R.id.imgIcon);
             holder.txtTitle = (TextView)row.findViewById(R.id.txtTitle);
-            holder.txttext = (TextView)row.findViewById(R.id.txttext);
+            holder.txttext = (TextView)row.findViewById(R.id.btn_inputlos);
 
             row.setTag(holder);
         }

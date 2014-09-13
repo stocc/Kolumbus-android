@@ -24,38 +24,23 @@ public class Suggestions extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suggestions);
 
+        //G
+        Sug sug_data[] = new Sug[]{
+               new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
+                new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
+                new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
+                new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
+                new Sug(R.drawable.ic_launcher,"Test","Untertitel"),
+                new Sug(R.drawable.ic_launcher,"Test","Untertitel")
+
+
+        };
+
         final ListView SugList = (ListView)findViewById(R.id.listView);
 
-        //data... later get in json
-        String[] values = new String[] { "Brandeburger Tor",
-                "Irgendeine Denkmal",
-                "Bundestag"};
+        SugAdapter adapter = new SugAdapter(this,R.layout.suggestions_list_layout,sug_data);
 
-        // new Adapter - > ???
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, values);
-
-        // Assign adapter to ListView
         SugList.setAdapter(adapter);
-
-
-        // ListView Item Click Listener
-        SugList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                int itemPosition = position;
-
-                String  itemValue = (String) SugList.getItemAtPosition(position);
-
-
-                Log.e("ListPosition",  "Position :"+itemPosition+"  ListItem : " +itemValue);
-
-
-            }
-
-        });
-
 
     }
 
