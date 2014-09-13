@@ -35,8 +35,9 @@ public class Suggestions extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suggestions);
 
-
         //GET Online DATA
+
+        Log.e("ich bin noch da","wirklich!");
 
         Log.e("URL","http://niklas-mbp.local:3000/v1/suggestions?accomodation_lat=" +
                 "5313&accomodation_lng=" +
@@ -45,6 +46,14 @@ public class Suggestions extends Activity {
                 MyMind.endDate + "&visited_count=" +
                 MyMind.earlierVisits + "&budget_class=" +
                 MyMind.budget);
+
+        Toast.makeText(getApplicationContext(),"http://niklas-mbp.local:3000/v1/suggestions?accomodation_lat=" +
+                "5313&accomodation_lng=" +
+                "13&starts_at=" +
+                MyMind.startDate + "&ends_at=" +
+                MyMind.endDate + "&visited_count=" +
+                MyMind.earlierVisits + "&budget_class=" +
+                MyMind.budget,Toast.LENGTH_LONG).show();
 
         HttpClient httpclient = new DefaultHttpClient();
         HttpGet httpget = new HttpGet("http://niklas-mbp.local:3000/v1/suggestions?accomodation_lat=" +
@@ -55,7 +64,7 @@ public class Suggestions extends Activity {
                 MyMind.earlierVisits + "&budget_class=" +
                 MyMind.budget);
 
-        try {
+        /*try {
             HttpResponse response = httpclient.execute(httpget);
             HttpEntity entity = response.getEntity();
 
@@ -75,7 +84,7 @@ public class Suggestions extends Activity {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
 
         //Got the dat to insert them to SUG[]
         Sug sug_data[] = new Sug[]{
