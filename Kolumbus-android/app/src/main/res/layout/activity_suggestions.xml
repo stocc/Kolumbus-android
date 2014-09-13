@@ -20,6 +20,7 @@
         android:id="@+id/sug_continue"
         android:background="@drawable/suggestions_circlebutton"
         android:text="Plane meinen Tag!"
+        android:textColor="#FFFFFF"
         android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>
