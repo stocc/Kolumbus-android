@@ -20,6 +20,10 @@
             android:name=".Input"
             android:label="@string/title_activity_input" >
         </activity>
+        <activity
+            android:name=".Suggestions"
+            android:label="@string/title_activity_suggestions" >
+        </activity>
     </application>
 
 </manifest>
