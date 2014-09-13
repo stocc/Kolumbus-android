@@ -22,6 +22,7 @@ public class Input extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Input.this, Suggestions.class);
+                overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
                 startActivity(intent);
             }
         });
