@@ -103,6 +103,13 @@ public class Input extends Activity {
             }
         });
 
+        btn_VisitIntensity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showIntensity();
+            }
+        });
+
     }
 
 
