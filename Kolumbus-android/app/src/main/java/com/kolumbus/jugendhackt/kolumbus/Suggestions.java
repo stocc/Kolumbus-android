@@ -59,6 +59,11 @@ import java.util.List;
 @EActivity
 public class Suggestions extends Activity {
 
+    List<String> lunch;
+    List<String> dinner;
+
+
+
     public String Url;
     ImageView img;
     Bitmap bitmap;
@@ -190,7 +195,8 @@ public class Suggestions extends Activity {
     /*
      * Preparing the list data
      */
-    private void prepareListData() {
+    @Background
+    public void prepareListData() {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
 
@@ -216,23 +222,40 @@ public class Suggestions extends Activity {
                 JSONObject temp = mJsonArray.getJSONObject(i);
 
                 String name = temp.getString("name");
+                System.out.print(name);
 
                 List<String> dinner = new ArrayList<String>();
                 dinner.add(name);
             }
-
         }catch (JSONException e){
             e.printStackTrace();
         }catch (HTTPException e){
             e.printStackTrace();
         }
 
-        List<String> dinner = new ArrayList<String>();
-        dinner.add("The Shawshank Redemption");
 
 
-        List<String> lunch = new ArrayList<String>();
-        lunch.add("The Conjuring");
+        RESTClient2 client2 =new RESTClient2(this);
+        try {
+            JSONObject mJsonObject = client2.getJSONObject(Url);
+            JSONArray mJsonArray = new JSONArray(mJsonObject.get("lunch").toString());
+            System.out.println("After entrance to lunch");
+
+            for (int i=0; i < mJsonArray.length();i++) {
+                JSONObject temp = mJsonArray.getJSONObject(i);
+
+                String name = temp.getString("name");
+                System.out.print(name);
+
+                lunch = new ArrayList<String>();
+                lunch.add(name);
+            }
+        }catch (JSONException e){
+            e.printStackTrace();
+        }catch (HTTPException e){
+            e.printStackTrace();
+        }
+
 
 
         List<String> sights = new ArrayList<String>();
@@ -244,11 +267,18 @@ public class Suggestions extends Activity {
         List<String> cafe = new ArrayList<String>();
         sights.add("2 Guns");
 
+
+    }
+
+
+    @UiThread
+    public void showui(){
         listDataChild.put(listDataHeader.get(0), dinner); // Header, Child data
         listDataChild.put(listDataHeader.get(1), lunch);
-        listDataChild.put(listDataHeader.get(2), sights);
-        listDataChild.put(listDataHeader.get(3), museum);
-        listDataChild.put(listDataHeader.get(4), cafe);
+       // listDataChild.put(listDataHeader.get(2), sights);
+       // listDataChild.put(listDataHeader.get(3), museum);
+       // listDataChild.put(listDataHeader.get(4), cafe);
+        loading.setVisibility(View.GONE);
     }
 
 
