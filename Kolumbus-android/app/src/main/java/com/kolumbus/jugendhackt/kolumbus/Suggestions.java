@@ -92,14 +92,15 @@ public class Suggestions extends Activity {
                 String.valueOf(MyMind.earlierVisits) + "&budget_class=" +
                 String.valueOf(MyMind.budget);
 
-        loadSuggestion();
+        //loadSuggestion();
 
         // get the listview
         expListView = (ExpandableListView) findViewById(R.id.listView);
 
+        // preparing list data
+        prepareListData();
+
         listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
-
-
 
         // setting list adapter
         expListView.setAdapter(listAdapter);
@@ -119,19 +120,7 @@ public class Suggestions extends Activity {
     @UiThread
     public void loadData() {
         RESTClient2 client =new RESTClient2(this);
-        System.out.print("ich bin noch da gleich mach ich die url auf");
-        Log.d("Hallo", "Help me");
 
-
-        listDataHeader = new ArrayList<String>();
-        listDataChild = new HashMap<String, List<String>>();
-
-        // Adding child data
-        listDataHeader.add("Abendessen");
-        listDataHeader.add("Mittagessen");
-        listDataHeader.add("Sehenswürdigkeiten");
-        listDataHeader.add("Museum");
-        listDataHeader.add("Cafe");
 
         try {
             JSONObject mJsonObject = client.getJSONObject(Url);
@@ -146,9 +135,6 @@ public class Suggestions extends Activity {
                 List<String> dinner = new ArrayList<String>();
                 dinner.add(name);
 
-                listDataChild.put(listDataHeader.get(0), dinner); // Header, Child data
-
-                System.out.println(name);
             }
 
 
@@ -197,6 +183,72 @@ public class Suggestions extends Activity {
                 Toast.makeText(Suggestions.this, "ERROR Loading Image", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+
+
+    /*
+     * Preparing the list data
+     */
+    private void prepareListData() {
+        listDataHeader = new ArrayList<String>();
+        listDataChild = new HashMap<String, List<String>>();
+
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+
+        // Adding child data
+        listDataHeader.add("Abendessen");
+        listDataHeader.add("Mittagessen");
+        listDataHeader.add("Sehenswürdigkeiten");
+        listDataHeader.add("Museum");
+        listDataHeader.add("Cafe");
+
+        RESTClient2 client =new RESTClient2(this);
+        try {
+            JSONObject mJsonObject = client.getJSONObject(Url);
+            JSONArray mJsonArray = new JSONArray(mJsonObject.get("dinner").toString());
+            System.out.println("After entrance to Dinner");
+
+            for (int i=0; i < mJsonArray.length();i++) {
+                JSONObject temp = mJsonArray.getJSONObject(i);
+
+                String name = temp.getString("name");
+
+                List<String> dinner = new ArrayList<String>();
+                dinner.add(name);
+            }
+
+        }catch (JSONException e){
+            e.printStackTrace();
+        }catch (HTTPException e){
+            e.printStackTrace();
+        }
+
+        List<String> dinner = new ArrayList<String>();
+        dinner.add("The Shawshank Redemption");
+
+
+        List<String> lunch = new ArrayList<String>();
+        lunch.add("The Conjuring");
+
+
+        List<String> sights = new ArrayList<String>();
+        sights.add("2 Guns");
+
+        List<String> museum = new ArrayList<String>();
+        sights.add("2 Guns");
+
+        List<String> cafe = new ArrayList<String>();
+        sights.add("2 Guns");
+
+        listDataChild.put(listDataHeader.get(0), dinner); // Header, Child data
+        listDataChild.put(listDataHeader.get(1), lunch);
+        listDataChild.put(listDataHeader.get(2), sights);
+        listDataChild.put(listDataHeader.get(3), museum);
+        listDataChild.put(listDataHeader.get(4), cafe);
     }
 
 
