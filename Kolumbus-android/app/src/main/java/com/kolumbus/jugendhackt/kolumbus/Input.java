@@ -3,18 +3,28 @@ package com.kolumbus.jugendhackt.kolumbus;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.SeekBar;
 import android.widget.Toast;
+
+import com.google.android.gms.maps.GoogleMap;
 
 import java.util.Calendar;
 
@@ -32,14 +42,19 @@ public class Input extends Activity {
 
         Button btn_los = (Button)findViewById(R.id.btn_leaveinput);
 
+        /* Use the LocationManager class to obtain GPS locations */
+        LocationManager mlocManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
 
+        LocationListener mlocListener = new MyLocationListener();
+        mlocManager.requestLocationUpdates( LocationManager.GPS_PROVIDER, 0, 0, mlocListener);
 
         final Button btn_DateStart = (Button)findViewById(R.id.btn_StartDate);
         final Button btn_DateEnd = (Button)findViewById(R.id.btn_EndDate);
         final Button btn_VisitCount = (Button)findViewById(R.id.btn_VisitCount);
         final Button btn_BudgetClass = (Button)findViewById(R.id.btn_BudgetClass);
         final Button btn_VisitIntensity = (Button)findViewById(R.id.btn_VisitIntensity);
-        final EditText btn_location = (EditText)findViewById(R.id.btn_Location);
+        final Button btn_location = (Button)findViewById(R.id.btn_Location);
+        final Button btn_location2 = (Button)findViewById(R.id.btn_Location2);
 
         btn_los.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,16 +71,16 @@ public class Input extends Activity {
                     Intent intent = new Intent(Input.this, Suggestions.class);
                     startActivity(intent);
                 }
-
-
             }
         });
+
+
 
 
         btn_location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btn_location.setText("");
+
             }
         });
 
@@ -278,4 +293,41 @@ public class Input extends Activity {
         });
         d.show();
     }
+
+/* Class My Location Listener */
+public class MyLocationListener implements LocationListener
+{
+
+    @Override
+    public void onLocationChanged(Location loc)
+    {
+
+        loc.getLatitude();
+        loc.getLongitude();
+
+        String Text = "My current location is: " +
+                "Latitud = " + loc.getLatitude() +
+                "Longitud = " + loc.getLongitude();
+
+        Toast.makeText(getApplicationContext(), Text, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onProviderDisabled(String provider)
+    {
+        Toast.makeText( getApplicationContext(), "Gps Disabled", Toast.LENGTH_SHORT ).show();
+    }
+
+    @Override
+    public void onProviderEnabled(String provider)
+    {
+        Toast.makeText( getApplicationContext(), "Gps Enabled", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras)
+    {
+
+    }
+}
 }

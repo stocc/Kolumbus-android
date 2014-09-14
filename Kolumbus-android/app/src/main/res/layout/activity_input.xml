@@ -13,7 +13,21 @@
         android:layout_alignParentStart="true"
         android:layout_above="@+id/btn_inputlos">
 
-        <EditText
+        <Button
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="!"
+            android:id="@+id/btn_Location2"
+            android:singleLine="true"
+            android:background="@drawable/circlebutton"
+            android:gravity="center_vertical|center_horizontal"
+            android:textIsSelectable="false"
+            android:inputType="none"
+            android:layout_alignTop="@+id/btn_Location"
+            android:layout_alignLeft="@+id/btn_Location"
+            android:layout_alignStart="@+id/btn_Location" />
+
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Berlin"
