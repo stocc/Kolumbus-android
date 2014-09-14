@@ -1,15 +1,9 @@
 package com.kolumbus.jugendhackt.kolumbus;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.DataSetObserver;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -17,9 +11,9 @@ import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import org.androidannotations.annotations.Background;
+import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.UiThread;
 import org.droidparts.net.http.HTTPException;
 import org.droidparts.net.http.RESTClient2;
@@ -27,14 +21,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
 
@@ -114,6 +102,7 @@ public class Suggestions extends Activity {
 
 
     }
+
 
 
 
@@ -250,6 +239,7 @@ public class Suggestions extends Activity {
 
         finishit();
     }
+
 
 
 
