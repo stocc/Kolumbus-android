@@ -268,16 +268,13 @@ public class Suggestions extends Activity {
                 String name = temp.getString("name");
                 System.out.print(name);
 
-                cafe.add("2 Guns");
+                cafe.add(name);
             }
         }catch (JSONException e){
             e.printStackTrace();
         }catch (HTTPException e){
             e.printStackTrace();
         }
-
-        cafe = new ArrayList<String>();
-        cafe.add("2 Guns");
 
 
         listDataChild.put(listDataHeader.get(0), dinner); // Header, Child data
