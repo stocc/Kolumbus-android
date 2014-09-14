@@ -99,6 +99,8 @@ public class Suggestions extends Activity {
     @Background
     public void loadData() {
         RESTClient2 client =new RESTClient2(this);
+        System.out.print("ich bin noch da gleich mach ich die url auf");
+        Log.d("Hallo", "Help me");
 
         try {
             JSONObject mJsonObject = client.getJSONObject(Url);
@@ -117,12 +119,15 @@ public class Suggestions extends Activity {
                 System.out.println(name);
                 Sug sug_data[] = new Sug[]{
                   new Sug(R.drawable.ic_launcher,name,url)
+
                 };
+
+                updateUI();
 
                 System.out.println("Sug_Data:" + sug_data);
             }
 
-            updateUI();
+
 
         }catch (JSONException e){
             e.printStackTrace();

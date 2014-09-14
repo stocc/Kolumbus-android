@@ -36,7 +36,9 @@ dependencies {
     compile project(':HeaderListView')
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.koushikdutta.ion:ion:1.3.8'
+    compile 'com.squareup.picasso:picasso:2.3.4'
     compile 'org.droidparts:droidparts:2.6.0'
+    compile 'com.squareup.picasso:picasso:2.3.4'
     apt "org.androidannotations:androidannotations:$AAVersion"
     compile "org.androidannotations:androidannotations-api:$AAVersion"
 }
