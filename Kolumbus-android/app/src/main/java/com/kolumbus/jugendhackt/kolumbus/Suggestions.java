@@ -122,12 +122,12 @@ public class Suggestions extends Activity {
 
                 };
 
-                updateUI();
+
 
                 System.out.println("Sug_Data:" + sug_data);
             }
 
-
+            updateUI();
 
         }catch (JSONException e){
             e.printStackTrace();
@@ -138,7 +138,8 @@ public class Suggestions extends Activity {
 
     @UiThread
     public void updateUI() {
-        SugAdapter adapter = new SugAdapter(this,R.layout.suggestions_list_layout, sug_data);
+        SugAdapter adapter = new SugAdapter(this,R.layout.suggestions_list_layout,sug_data);
+        System.out.print(sug_data);
         SugList.setAdapter(adapter);
 
         loading.setVisibility(View.GONE);
