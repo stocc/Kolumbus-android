@@ -97,20 +97,11 @@ public class Suggestions extends Activity {
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
 
-                Intent intent = new Intent(Suggestions.this, SugDetailsInfo.class);
-                startActivity(intent);
-
                 übergabe.Categorie = listDataHeader.get(groupPosition);
                 übergabe.Name=listDataChild.get(groupPosition).get(childPosition);
 
-                Toast.makeText(
-                        getApplicationContext(),
-                        listDataHeader.get(groupPosition)
-                                + " : "
-                                + listDataChild.get(
-                                listDataHeader.get(groupPosition)).get(
-                                childPosition), Toast.LENGTH_SHORT)
-                        .show();
+                Intent intent = new Intent(Suggestions.this, SugDetailsInfo.class);
+                startActivity(intent);
                 return false;
             }
         });
