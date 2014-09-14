@@ -3,16 +3,28 @@ package com.kolumbus.jugendhackt.kolumbus;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.SeekBar;
 import android.widget.Toast;
+
+import com.google.android.gms.maps.GoogleMap;
 
 import java.util.Calendar;
 
@@ -51,7 +63,7 @@ public class Input extends Activity {
                     Toast.makeText(getApplicationContext(),"Du musst zuerst ALLE Angaben machen!",Toast.LENGTH_LONG).show();
                 }
                 else{
-                    Intent intent = new Intent(Input.this, Suggestions_.class);
+                    Intent intent = new Intent(Input.this, Suggestions.class);
                     startActivity(intent);
                 }
             }

@@ -12,6 +12,7 @@ import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
+import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.UiThread;
 import org.droidparts.net.http.HTTPException;
@@ -19,11 +20,12 @@ import org.droidparts.net.http.RESTClient2;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-@EActivity
+
 public class Suggestions extends Activity {
 
     List<String> lunch;
@@ -45,7 +47,7 @@ public class Suggestions extends Activity {
     HashMap<String, List<String>> listDataChild;
 
 
-    @UiThread
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suggestions);
