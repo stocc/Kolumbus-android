@@ -31,15 +31,7 @@ public class Input extends Activity {
 
         Button btn_los = (Button)findViewById(R.id.btn_leaveinput);
 
-        btn_los.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                Intent intent = new Intent(Input.this, Suggestions.class);
-                startActivity(intent);
-
-            }
-        });
 
         final Button btn_DateStart = (Button)findViewById(R.id.btn_StartDate);
         final Button btn_DateEnd = (Button)findViewById(R.id.btn_EndDate);
@@ -47,6 +39,24 @@ public class Input extends Activity {
         final Button btn_BudgetClass = (Button)findViewById(R.id.btn_BudgetClass);
         final Button btn_VisitIntensity = (Button)findViewById(R.id.btn_VisitIntensity);
         final EditText btn_location = (EditText)findViewById(R.id.btn_Location);
+
+        btn_los.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if ((btn_DateStart.getText()=="Startdatum")||
+                    (btn_DateEnd.getText()=="Enddatum")||
+                     (btn_VisitCount.getText()=="Vorherige Besuche") ||
+                      (btn_BudgetClass.getText()=="Budget")||
+                       (btn_VisitIntensity).getText()=="Intensität"){
+                    Intent intent = new Intent(Input.this, Suggestions.class);
+                    startActivity(intent);
+                }
+
+
+            }
+        });
+
 
         btn_location.setOnClickListener(new View.OnClickListener() {
             @Override
