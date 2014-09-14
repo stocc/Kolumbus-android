@@ -1,1 +1,1 @@
-include ':app', ':library', ':HeaderListViewDemo', ':HeaderListView'
+include ':app', ':library'

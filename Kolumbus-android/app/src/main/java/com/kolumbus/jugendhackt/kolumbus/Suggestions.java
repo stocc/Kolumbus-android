@@ -18,6 +18,9 @@ import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import org.androidannotations.annotations.Background;
+import org.androidannotations.annotations.UiThread;
 import org.droidparts.net.http.HTTPException;
 import org.droidparts.net.http.RESTClient2;
 import org.json.JSONArray;
@@ -89,9 +92,6 @@ public class Suggestions extends Activity {
         listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
         expListView.setAdapter(listAdapter);
 
-
-
-
         // Listview on child click listener
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 
@@ -105,8 +105,8 @@ public class Suggestions extends Activity {
                 Intent intent = new Intent(Suggestions.this, SugDetailsInfo.class);
                 startActivity(intent);*/
 
-                int index = parent.getFlatListPosition(ExpandableListView.getPackedPositionForChild(groupPosition, childPosition));
-                parent.setItemChecked(index, true);
+                /*int index = parent.getFlatListPosition(ExpandableListView.getPackedPositionForChild(groupPosition, childPosition));
+                parent.setItemChecked(index, true);*/
 
                 return false;
             }
@@ -114,6 +114,7 @@ public class Suggestions extends Activity {
 
 
     }
+
 
 
     public void prepareListData() {
@@ -125,12 +126,7 @@ public class Suggestions extends Activity {
             StrictMode.setThreadPolicy(policy);
         }
 
-        // Adding child data
-        listDataHeader.add("Abendessen");
-        listDataHeader.add("Mittagessen");
-        listDataHeader.add("Sehenswürdigkeiten");
-        listDataHeader.add("Museum");
-        listDataHeader.add("Cafe");
+        addchilddata();
 
         //-----------------------------------------
 
@@ -252,6 +248,22 @@ public class Suggestions extends Activity {
             e.printStackTrace();
         }
 
+        finishit();
+    }
+
+
+
+    public void addchilddata(){
+        // Adding child data
+        listDataHeader.add("Abendessen");
+        listDataHeader.add("Mittagessen");
+        listDataHeader.add("Sehenswürdigkeiten");
+        listDataHeader.add("Museum");
+        listDataHeader.add("Cafe");
+    }
+
+
+    public void finishit(){
         listDataChild.put(listDataHeader.get(0), dinner); // Header, Child data
         listDataChild.put(listDataHeader.get(1), lunch);
         listDataChild.put(listDataHeader.get(2), sights);

@@ -29,7 +29,7 @@ public class Splash extends Activity {
                         tV_Splash.setText("Ich bin Kolumbus");
                         mHandler.postDelayed(new Runnable() {
                             public void run() {
-                                tV_Splash.setText("Lass mich deine \n Reise Planen");
+                                tV_Splash.setText("Lass mich deine \n Reise Planen!");
                                 mHandler.postDelayed(new Runnable() {
                                     public void run() {
                                         Intent intent = new Intent(Splash.this, Input.class);
@@ -41,7 +41,7 @@ public class Splash extends Activity {
                     }
                 }, 1000);
             }
-        }, 1000);
+        }, 500);
 
 
 

@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/HeaderListView/HeaderListView.iml" filepath="$PROJECT_DIR$/HeaderListView/HeaderListView.iml" />
-      <module fileurl="file://$PROJECT_DIR$/HeaderListViewDemo/HeaderListViewDemo.iml" filepath="$PROJECT_DIR$/HeaderListViewDemo/HeaderListViewDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/Kolumbus-android.iml" filepath="$PROJECT_DIR$/Kolumbus-android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
