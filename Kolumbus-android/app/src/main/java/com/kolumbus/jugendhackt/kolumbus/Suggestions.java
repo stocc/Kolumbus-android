@@ -110,34 +110,6 @@ public class Suggestions extends Activity {
     }
 
 
-    private class LoadImage extends AsyncTask<String, String, Bitmap> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            pDialog = new ProgressDialog(Suggestions.this);
-            pDialog.setMessage("Loading Image ....");
-            pDialog.show();
-        }
-        protected Bitmap doInBackground(String... args) {
-            try {
-                bitmap = BitmapFactory.decodeStream((InputStream) new URL(args[0]).getContent());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return bitmap;
-        }
-        protected void onPostExecute(Bitmap image) {
-            if(image != null){
-                img.setImageBitmap(image);
-                pDialog.dismiss();
-            }else{
-                pDialog.dismiss();
-                Toast.makeText(Suggestions.this, "ERROR Loading Image", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
-
     public void prepareListData() {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();

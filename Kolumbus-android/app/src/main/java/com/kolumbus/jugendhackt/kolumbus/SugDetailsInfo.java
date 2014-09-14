@@ -3,6 +3,7 @@ package com.kolumbus.jugendhackt.kolumbus;
 import android.app.Activity;
 import android.media.Image;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -31,7 +32,7 @@ public class SugDetailsInfo extends Activity {
 
         tV_Name.setText(übergabe.Name);
 
-        String Url = "http://secure-mountain-7532.herokuapp.com/v1/suggestions?accomodation_lat=" +
+        /*String Url = "http://secure-mountain-7532.herokuapp.com/v1/suggestions?accomodation_lat=" +
                 "53.00000&accomodation_lng=" +
                 "13.00000&starts_at=" +
                 MyMind.startDate + "&ends_at=" +
@@ -48,18 +49,23 @@ public class SugDetailsInfo extends Activity {
         if (übergabe.Categorie=="Museum")CAT="museum";
 
 
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+
 
         RESTClient2 client =new RESTClient2(this);
         try {
             JSONObject mJsonObject = client.getJSONObject(Url);
             JSONArray mJsonArray = new JSONArray(mJsonObject.get(CAT).toString());
-            System.out.println("After entrance to Dinner");
+
 
             for (int i=0; i < mJsonArray.length();i++) {
                 JSONObject temp = mJsonArray.getJSONObject(i);
 
                 String name = temp.getString("name");
-                System.out.print(name);
+
 
 
             }
@@ -67,7 +73,7 @@ public class SugDetailsInfo extends Activity {
             e.printStackTrace();
         }catch (HTTPException e){
             e.printStackTrace();
-        }
+        }*/
     }
 
 }
