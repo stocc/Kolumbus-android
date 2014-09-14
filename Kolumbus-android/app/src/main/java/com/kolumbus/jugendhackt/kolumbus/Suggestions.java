@@ -102,10 +102,10 @@ public class Suggestions extends Activity {
         // get the listview
         expListView = (ExpandableListView) findViewById(R.id.listView);
 
-        // preparing list data
-        prepareListData();
-
         listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
+
+        // preparing list data
+        //prepareListData();
 
         // setting list adapter
         expListView.setAdapter(listAdapter);
@@ -195,7 +195,7 @@ public class Suggestions extends Activity {
     /*
      * Preparing the list data
      */
-    @Background
+    @UiThread
     public void prepareListData() {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
@@ -268,18 +268,17 @@ public class Suggestions extends Activity {
         sights.add("2 Guns");
 
 
-    }
-
-
-    @UiThread
-    public void showui(){
         listDataChild.put(listDataHeader.get(0), dinner); // Header, Child data
         listDataChild.put(listDataHeader.get(1), lunch);
-       // listDataChild.put(listDataHeader.get(2), sights);
-       // listDataChild.put(listDataHeader.get(3), museum);
-       // listDataChild.put(listDataHeader.get(4), cafe);
+        listDataChild.put(listDataHeader.get(2), sights);
+        listDataChild.put(listDataHeader.get(3), museum);
+        listDataChild.put(listDataHeader.get(4), cafe);
         loading.setVisibility(View.GONE);
+
     }
+
+
+
 
 
 
