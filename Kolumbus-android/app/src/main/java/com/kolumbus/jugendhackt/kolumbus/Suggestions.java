@@ -28,6 +28,7 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -99,8 +100,6 @@ public class Suggestions extends Activity {
 
                 übergabe.Categorie = listDataHeader.toString();
                 übergabe.Name=listDataChild.toString();
-
-
 
                 Intent intent = new Intent(Suggestions.this, SugDetailsInfo.class);
                 startActivity(intent);
@@ -184,7 +183,7 @@ public class Suggestions extends Activity {
         try {
             JSONObject mJsonObject = client3.getJSONObject(Url);
             JSONArray mJsonArray = new JSONArray(mJsonObject.get("sights to see").toString());
-            System.out.println("After entrance to lunch");
+            System.out.println("After entrance to sights to see");
 
             for (int i=0; i < mJsonArray.length();i++) {
                 JSONObject temp = mJsonArray.getJSONObject(i);
@@ -208,7 +207,7 @@ public class Suggestions extends Activity {
         try {
             JSONObject mJsonObject = client4.getJSONObject(Url);
             JSONArray mJsonArray = new JSONArray(mJsonObject.get("museum").toString());
-            System.out.println("After entrance to lunch");
+            System.out.println("After entrance to museum");
 
             for (int i=0; i < mJsonArray.length();i++) {
                 JSONObject temp = mJsonArray.getJSONObject(i);
@@ -232,7 +231,7 @@ public class Suggestions extends Activity {
         try {
             JSONObject mJsonObject = client5.getJSONObject(Url);
             JSONArray mJsonArray = new JSONArray(mJsonObject.get("cafe").toString());
-            System.out.println("After entrance to lunch");
+            System.out.println("After entrance to cafe");
 
             for (int i=0; i < mJsonArray.length();i++) {
                 JSONObject temp = mJsonArray.getJSONObject(i);
@@ -248,7 +247,6 @@ public class Suggestions extends Activity {
             e.printStackTrace();
         }
 
-
         listDataChild.put(listDataHeader.get(0), dinner); // Header, Child data
         listDataChild.put(listDataHeader.get(1), lunch);
         listDataChild.put(listDataHeader.get(2), sights);
@@ -257,15 +255,7 @@ public class Suggestions extends Activity {
 
         ProgressBar loader = (ProgressBar)findViewById(R.id.loading);
         loader.setVisibility(View.GONE);
-
-
-
     }
-
-
-
-
-
 
 }
 
