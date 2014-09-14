@@ -16,6 +16,7 @@ public class DemoActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         HeaderListView list = new HeaderListView(this);
 
         list.setAdapter(new SectionAdapter() {

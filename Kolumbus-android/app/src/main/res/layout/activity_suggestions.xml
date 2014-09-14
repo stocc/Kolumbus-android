@@ -5,7 +5,7 @@
     tools:context="com.kolumbus.jugendhackt.kolumbus.Suggestions">
 
 
-    <ListView
+    <ExpandableListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/listView"
