@@ -12,8 +12,11 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 import org.droidparts.net.http.HTTPException;
 import org.droidparts.net.http.RESTClient2;
@@ -35,6 +38,9 @@ public class Suggestions extends Activity {
 
     List<String> lunch;
     List<String> dinner;
+    List<String> sights;
+    List<String> museum;
+    List<String> cafe;
 
 
 
@@ -55,6 +61,16 @@ public class Suggestions extends Activity {
         setContentView(R.layout.activity_suggestions);
 
 
+        Button btn_sugnext = (Button)findViewById(R.id.sug_continue);
+        btn_sugnext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Suggestions.this, timetable.class);
+                startActivity(intent);
+            }
+        });
+
+
         // GET Online DATA
          Url = "http://secure-mountain-7532.herokuapp.com/v1/suggestions?accomodation_lat=" +
                 "53.00000&accomodation_lng=" +
@@ -73,47 +89,6 @@ public class Suggestions extends Activity {
         expListView.setAdapter(listAdapter);
 
     }
-
-    public void loadSuggestion(){
-        if (android.os.Build.VERSION.SDK_INT > 9) {
-            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-            StrictMode.setThreadPolicy(policy);
-        }
-
-        loadData();
-
-    }
-
-    public void loadData() {
-        RESTClient2 client =new RESTClient2(this);
-
-
-        try {
-            JSONObject mJsonObject = client.getJSONObject(Url);
-            JSONArray mJsonArray = new JSONArray(mJsonObject.get("dinner").toString());
-            System.out.println("After entrance to Dinner");
-
-            for (int i=0; i < mJsonArray.length();i++) {
-                JSONObject temp = mJsonArray.getJSONObject(i);
-
-                String name = temp.getString("name");
-
-                List<String> dinner = new ArrayList<String>();
-                dinner.add(name);
-
-            }
-
-
-           // listDataChild.put(listDataHeader.get(1), nowShowing);
-            //listDataChild.put(listDataHeader.get(2), comingSoon);
-
-        }catch (JSONException e){
-            e.printStackTrace();
-        }catch (HTTPException e){
-            e.printStackTrace();
-        }
-    }
-
 
 
     private class LoadImage extends AsyncTask<String, String, Bitmap> {
@@ -144,11 +119,6 @@ public class Suggestions extends Activity {
     }
 
 
-
-    /*
-     * Preparing the list data
-     */
-
     public void prepareListData() {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
@@ -165,6 +135,10 @@ public class Suggestions extends Activity {
         listDataHeader.add("Museum");
         listDataHeader.add("Cafe");
 
+        //-----------------------------------------
+
+        dinner = new ArrayList<String>();
+
         RESTClient2 client =new RESTClient2(this);
         try {
             JSONObject mJsonObject = client.getJSONObject(Url);
@@ -177,7 +151,6 @@ public class Suggestions extends Activity {
                 String name = temp.getString("name");
                 System.out.print(name);
 
-                List<String> dinner = new ArrayList<String>();
                 dinner.add(name);
             }
         }catch (JSONException e){
@@ -186,7 +159,9 @@ public class Suggestions extends Activity {
             e.printStackTrace();
         }
 
+        //-----------------------------------------
 
+        lunch = new ArrayList<String>();
 
         RESTClient2 client2 =new RESTClient2(this);
         try {
@@ -200,7 +175,6 @@ public class Suggestions extends Activity {
                 String name = temp.getString("name");
                 System.out.print(name);
 
-                lunch = new ArrayList<String>();
                 lunch.add(name);
             }
         }catch (JSONException e){
@@ -209,16 +183,80 @@ public class Suggestions extends Activity {
             e.printStackTrace();
         }
 
+        //-----------------------------------------
 
+        sights = new ArrayList<String>();
 
-        List<String> sights = new ArrayList<String>();
-        sights.add("2 Guns");
+        RESTClient2 client3 =new RESTClient2(this);
+        try {
+            JSONObject mJsonObject = client3.getJSONObject(Url);
+            JSONArray mJsonArray = new JSONArray(mJsonObject.get("sights to see").toString());
+            System.out.println("After entrance to lunch");
 
-        List<String> museum = new ArrayList<String>();
-        sights.add("2 Guns");
+            for (int i=0; i < mJsonArray.length();i++) {
+                JSONObject temp = mJsonArray.getJSONObject(i);
 
-        List<String> cafe = new ArrayList<String>();
-        sights.add("2 Guns");
+                String name = temp.getString("name");
+                System.out.print(name);
+
+                sights.add(name);
+            }
+        }catch (JSONException e){
+            e.printStackTrace();
+        }catch (HTTPException e){
+            e.printStackTrace();
+        }
+
+        //-----------------------------------------
+
+        museum = new ArrayList<String>();
+
+        RESTClient2 client4 =new RESTClient2(this);
+        try {
+            JSONObject mJsonObject = client4.getJSONObject(Url);
+            JSONArray mJsonArray = new JSONArray(mJsonObject.get("sights to see").toString());
+            System.out.println("After entrance to lunch");
+
+            for (int i=0; i < mJsonArray.length();i++) {
+                JSONObject temp = mJsonArray.getJSONObject(i);
+
+                String name = temp.getString("name");
+                System.out.print(name);
+
+                museum.add(name);
+            }
+        }catch (JSONException e){
+            e.printStackTrace();
+        }catch (HTTPException e){
+            e.printStackTrace();
+        }
+
+        //------------------------------
+
+        cafe = new ArrayList<String>();
+
+        RESTClient2 client5 =new RESTClient2(this);
+        try {
+            JSONObject mJsonObject = client5.getJSONObject(Url);
+            JSONArray mJsonArray = new JSONArray(mJsonObject.get("sights to see").toString());
+            System.out.println("After entrance to lunch");
+
+            for (int i=0; i < mJsonArray.length();i++) {
+                JSONObject temp = mJsonArray.getJSONObject(i);
+
+                String name = temp.getString("name");
+                System.out.print(name);
+
+                cafe.add("2 Guns");
+            }
+        }catch (JSONException e){
+            e.printStackTrace();
+        }catch (HTTPException e){
+            e.printStackTrace();
+        }
+
+        cafe = new ArrayList<String>();
+        cafe.add("2 Guns");
 
 
         listDataChild.put(listDataHeader.get(0), dinner); // Header, Child data
@@ -226,6 +264,10 @@ public class Suggestions extends Activity {
         listDataChild.put(listDataHeader.get(2), sights);
         listDataChild.put(listDataHeader.get(3), museum);
         listDataChild.put(listDataHeader.get(4), cafe);
+
+        ProgressBar loader = (ProgressBar)findViewById(R.id.loading);
+        loader.setVisibility(View.GONE);
+
 
 
     }
