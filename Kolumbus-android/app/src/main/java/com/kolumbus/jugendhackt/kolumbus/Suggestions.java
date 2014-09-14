@@ -12,35 +12,9 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.androidquery.util.Progress;
-import com.applidium.headerlistview.HeaderListView;
-import com.applidium.headerlistview.SectionAdapter;
-
-import org.androidannotations.annotations.Background;
-import org.androidannotations.annotations.EActivity;
-import org.androidannotations.annotations.UiThread;
-import org.androidannotations.annotations.ViewById;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.droidparts.net.http.HTTPException;
 import org.droidparts.net.http.RESTClient2;
 import org.json.JSONArray;
@@ -56,7 +30,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-@EActivity
+
 public class Suggestions extends Activity {
 
     List<String> lunch;
@@ -68,14 +42,6 @@ public class Suggestions extends Activity {
     ImageView img;
     Bitmap bitmap;
     ProgressDialog pDialog;
-    Sug sug_data[];
-
-    @ViewById(R.id.loading)
-    ProgressBar loading;
-
-    @ViewById(R.id.listView)
-    ListView SugList;
-
 
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
@@ -88,7 +54,8 @@ public class Suggestions extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suggestions);
 
-        //GET Online DATA
+
+        // GET Online DATA
          Url = "http://secure-mountain-7532.herokuapp.com/v1/suggestions?accomodation_lat=" +
                 "53.00000&accomodation_lng=" +
                 "13.00000&starts_at=" +
@@ -97,17 +64,12 @@ public class Suggestions extends Activity {
                 String.valueOf(MyMind.earlierVisits) + "&budget_class=" +
                 String.valueOf(MyMind.budget);
 
-        //loadSuggestion();
-
-        // get the listview
-        expListView = (ExpandableListView) findViewById(R.id.listView);
-
-        listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
+         expListView = (ExpandableListView) findViewById(R.id.listView);
 
         // preparing list data
-        //prepareListData();
+        prepareListData();
 
-        // setting list adapter
+        listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
         expListView.setAdapter(listAdapter);
 
     }
@@ -122,7 +84,6 @@ public class Suggestions extends Activity {
 
     }
 
-    @UiThread
     public void loadData() {
         RESTClient2 client =new RESTClient2(this);
 
@@ -153,16 +114,8 @@ public class Suggestions extends Activity {
         }
     }
 
-    @UiThread
-    public void updateUI() {
-        SugAdapter adapter = new SugAdapter(this,R.layout.suggestions_list_layout,sug_data);
-        System.out.print(sug_data);
-        SugList.setAdapter(adapter);
 
-        loading.setVisibility(View.GONE);
-    }
 
-    //Image Laden
     private class LoadImage extends AsyncTask<String, String, Bitmap> {
         @Override
         protected void onPreExecute() {
@@ -195,7 +148,7 @@ public class Suggestions extends Activity {
     /*
      * Preparing the list data
      */
-    @UiThread
+
     public void prepareListData() {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
@@ -273,7 +226,7 @@ public class Suggestions extends Activity {
         listDataChild.put(listDataHeader.get(2), sights);
         listDataChild.put(listDataHeader.get(3), museum);
         listDataChild.put(listDataHeader.get(4), cafe);
-        loading.setVisibility(View.GONE);
+
 
     }
 
