@@ -88,6 +88,27 @@ public class Suggestions extends Activity {
         listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
         expListView.setAdapter(listAdapter);
 
+
+
+        // Listview on child click listener
+        expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v,
+                                        int groupPosition, int childPosition, long id) {
+                Toast.makeText(
+                        getApplicationContext(),
+                        listDataHeader.get(groupPosition)
+                                + " : "
+                                + listDataChild.get(
+                                listDataHeader.get(groupPosition)).get(
+                                childPosition), Toast.LENGTH_SHORT)
+                        .show();
+                return false;
+            }
+        });
+
+
     }
 
 
@@ -214,7 +235,7 @@ public class Suggestions extends Activity {
         RESTClient2 client4 =new RESTClient2(this);
         try {
             JSONObject mJsonObject = client4.getJSONObject(Url);
-            JSONArray mJsonArray = new JSONArray(mJsonObject.get("sights to see").toString());
+            JSONArray mJsonArray = new JSONArray(mJsonObject.get("museum").toString());
             System.out.println("After entrance to lunch");
 
             for (int i=0; i < mJsonArray.length();i++) {
@@ -238,7 +259,7 @@ public class Suggestions extends Activity {
         RESTClient2 client5 =new RESTClient2(this);
         try {
             JSONObject mJsonObject = client5.getJSONObject(Url);
-            JSONArray mJsonArray = new JSONArray(mJsonObject.get("sights to see").toString());
+            JSONArray mJsonArray = new JSONArray(mJsonObject.get("cafe").toString());
             System.out.println("After entrance to lunch");
 
             for (int i=0; i < mJsonArray.length();i++) {
