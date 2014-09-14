@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.NumberPicker;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -44,13 +45,16 @@ public class Input extends Activity {
             @Override
             public void onClick(View v) {
 
-                if ((btn_DateStart.getText()=="Startdatum")||
-                    (btn_DateEnd.getText()=="Enddatum")||
-                     (btn_VisitCount.getText()=="Vorherige Besuche") ||
-                      (btn_BudgetClass.getText()=="Budget")||
-                       (btn_VisitIntensity).getText()=="Intensität"){
+                if ((btn_DateStart.getText()!="Startdatum")&&
+                    (btn_DateEnd.getText()!="Enddatum")&&
+                     (btn_VisitCount.getText()!="Vorherige Besuche")&&
+                      (btn_BudgetClass.getText()!="Budget")&&
+                       (btn_VisitIntensity).getText()!="Intensität"){
                     Intent intent = new Intent(Input.this, Suggestions.class);
                     startActivity(intent);
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),"Du musst zuerst ALLE Angaben machen!",Toast.LENGTH_LONG).show();
                 }
 
 
