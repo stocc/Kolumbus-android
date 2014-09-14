@@ -91,6 +91,7 @@ public class Suggestions extends Activity {
 
 
 
+
         // Listview on child click listener
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 
@@ -98,11 +99,15 @@ public class Suggestions extends Activity {
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
 
-                übergabe.Categorie = listDataHeader.toString();
+                /*übergabe.Categorie = listDataHeader.toString();
                 übergabe.Name=listDataChild.toString();
 
                 Intent intent = new Intent(Suggestions.this, SugDetailsInfo.class);
-                startActivity(intent);
+                startActivity(intent);*/
+
+                int index = parent.getFlatListPosition(ExpandableListView.getPackedPositionForChild(groupPosition, childPosition));
+                parent.setItemChecked(index, true);
+
                 return false;
             }
         });
