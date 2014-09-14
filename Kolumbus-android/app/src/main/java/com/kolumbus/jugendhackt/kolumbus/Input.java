@@ -45,16 +45,16 @@ public class Input extends Activity {
             @Override
             public void onClick(View v) {
 
-                if ((btn_DateStart.getText()!="Startdatum")&&
-                    (btn_DateEnd.getText()!="Enddatum")&&
-                     (btn_VisitCount.getText()!="Vorherige Besuche")&&
-                      (btn_BudgetClass.getText()!="Budget")&&
-                       (btn_VisitIntensity).getText()!="Intensität"){
-                    Intent intent = new Intent(Input.this, Suggestions.class);
-                    startActivity(intent);
+                if ((btn_DateStart.getText()=="Startdatum")||
+                    (btn_DateEnd.getText()=="Enddatum")||
+                     (btn_VisitCount.getText()=="Vorherige Besuche") ||
+                      (btn_BudgetClass.getText()=="Budget")||
+                       (btn_VisitIntensity).getText()=="Intensität"){
+                    Toast.makeText(getApplicationContext(),"Du musst zuerst ALLE Angaben machen!",Toast.LENGTH_LONG).show();
                 }
                 else{
-                    Toast.makeText(getApplicationContext(),"Du musst zuerst ALLE Angaben machen!",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(Input.this, Suggestions.class);
+                    startActivity(intent);
                 }
 
 

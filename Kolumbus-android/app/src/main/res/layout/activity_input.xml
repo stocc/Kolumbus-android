@@ -16,14 +16,16 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ort / Stadt"
+            android:text="Berlin"
             android:id="@+id/btn_Location"
             android:singleLine="true"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:background="@drawable/circlebutton"
             android:layout_marginTop="15dp"
-            android:gravity="center_vertical|center_horizontal" />
+            android:gravity="center_vertical|center_horizontal"
+            android:textIsSelectable="false"
+            android:inputType="none" />
 
         <Button
             android:layout_width="wrap_content"

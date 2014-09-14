@@ -97,8 +97,10 @@ public class Suggestions extends Activity {
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
 
-                übergabe.Categorie = listDataHeader.get(groupPosition);
-                übergabe.Name=listDataChild.get(groupPosition).get(childPosition);
+                übergabe.Categorie = listDataHeader.toString();
+                übergabe.Name=listDataChild.toString();
+
+
 
                 Intent intent = new Intent(Suggestions.this, SugDetailsInfo.class);
                 startActivity(intent);
